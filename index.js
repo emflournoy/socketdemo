@@ -8,9 +8,7 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   console.log('a user connected h');
-  socket.on('amount', function(data){
-    console.log('cheese', data);
-  })
+  socket.emit('amount', 'helloworld');
 });
 
 // io.on('connection', function(socket){

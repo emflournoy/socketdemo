@@ -9,18 +9,19 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
-        var socket = io();
         $('.button').click(function(e){
           e.preventDefault();
-          socket.emit('amount', $('.button').text());
         });
       });
+      var socket = io();
+      socket.on('amount', function(data){
+        console.log(data);
+        $('.button').html(data);
+      })
     </script>
   </head>
   <body>
     <button class='button'>50</button>
-    <button class='button'>80</button>
-    <button class='button'>90</button>
   </body>
 </html>
 
