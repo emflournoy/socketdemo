@@ -10,15 +10,46 @@
     <script>
       $(function () {
         var socket = io();
-        $('#button').click(function(){
-          let dog='fawkes'
-          socket.emit('amount', 50);
-          return dog;
+        $('.button').click(function(e){
+          e.preventDefault();
+          socket.emit('amount', $('.button').text());
         });
       });
     </script>
   </head>
   <body>
-    <button id='button'>50</button>
+    <button class='button'>50</button>
+    <button class='button'>80</button>
+    <button class='button'>90</button>
   </body>
 </html>
+
+<!--
+
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function () {
+        var socket = io();
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </body>
+</html> -->
